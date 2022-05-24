@@ -3,9 +3,9 @@ import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'RoundedButton.dart';
-import 'inputField.dart';
-import 'RoundedPassword.dart';
+import '../materials/RoundedButton.dart';
+import '../materials/inputField.dart';
+import '../materials/RoundedPassword.dart';
 
 class Body extends StatelessWidget {
   const Body({
