@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'View/Pages/home_page.dart';
 import 'package:reddit/Screens/Login.dart';
 
 void main() {
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Reddit',
       theme: ThemeData(
           primarySwatch: Colors.blue
-        //primarySwatch: Colors.amber,
       ),
       //home: LoginScreen(),
       //home: HomePage(),
