@@ -1,5 +1,8 @@
+import 'package:reddit/Types/post_type.dart';
 class User{
   late final String userId;
-  //List<Post> myPosts;
-  //List<Post> Likes;
+  late final String password;
+  late String avatar;
+  late List<Post> myPosts;
+  late List<Post> myLikes;
 }
