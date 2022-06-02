@@ -3,7 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'body.dart';
 
-class LoginScreen extends StatelessWidget {
+class signUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +19,10 @@ class LoginScreen extends StatelessWidget {
               onPressed: (){
 
               },
-              child: Text("Sign up",
+              child: Text("Login",
                 style: TextStyle(
                   color: Colors.blue,
+                  fontSize: 17,
                 ) ,))
         ],
         leading: IconButton(
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
           onPressed: () {  },
         ),
       ),
-      body: Body(key: Key("value"),),
+      body: Body(key: Key("value"), addUser: (){}),
     );
   }
 }

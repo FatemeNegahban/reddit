@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           onPressed: () {  },
         ),
       ),
-      body: Body(key: Key("value"),),
+      body: Body(key: Key("value"), addUser: (){}),
     );
   }
 }

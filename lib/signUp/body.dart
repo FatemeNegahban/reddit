@@ -7,10 +7,24 @@ import '../materials/RoundedButton.dart';
 import '../materials/inputField.dart';
 import '../materials/RoundedPassword.dart';
 
-class Body extends StatelessWidget {
-  const Body({
+class Body extends StatefulWidget {
+  Function addUser;
+  Body({
     required Key key,
+     required this.addUser,
   }) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState(addUser : addUser);
+}
+
+class _BodyState extends State<Body> {
+  Function addUser;
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  _BodyState({
+    required this.addUser,
+});
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +35,34 @@ class Body extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Log in",style: TextStyle(color : Colors.white,fontSize: 27),),
+            Text("Create an account",style: TextStyle(color : Colors.white,fontSize: 27),),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(height: size.height * 0.03),
                   RoundedInputField(
-                    hintText: "Your Email",
-                    onChanged: (value) {}, key: Key("email_input"),
+                    hintText: "Email",
+                    onChanged: (value) {
+                      _usernameController.text = value;
+                    }, key: Key("email_input"),
+                    hintStyle: Colors.white,
+                  ),
+                  RoundedInputField(
+                    hintText: "Username",
+                    onChanged: (value) {
+                      _usernameController.text = value;
+                    }, key: Key("username_input"),
                     hintStyle: Colors.white,
                   ),
                   RoundedPasswordField(
-                    onChanged: (value) {}, key: Key("value"),
+                    onChanged: (value) {
+                      _passwordController.text = value;
+                    }, key: Key("password_input"),
                   ),
                   RoundedButton(
-                    text: "LOGIN",
-                    press: () {}, key: Key("login_input"),
+                    text: "Continue",
+                    press: () {}, key: Key("continue_input"),
                   ),
                   SizedBox(height: size.height * 0.03),
                 ],

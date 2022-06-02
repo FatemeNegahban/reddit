@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:reddit/Login/Login.dart';
-import 'package:reddit/SignUp/signup.dart';
+import 'package:reddit/signUp/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue
       ),
-      home: signupScreen(),
+      home: signUpScreen(),
     );
   }
 }
