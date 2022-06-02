@@ -28,15 +28,15 @@ class Body extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: size.height * 0.03),
                   RoundedInputField(
-                    hintText: "Your Email",
-                    onChanged: (value) {}, key: Key("email_input"),
+                    hintText: "Username",
+                    onChanged: (value) {}, key: Key("username_input"),
                     hintStyle: Colors.white,
                   ),
                   RoundedPasswordField(
-                    onChanged: (value) {}, key: Key("value"),
+                    onChanged: (value) {}, key: Key("value"), username: '', password: '',
                   ),
                   RoundedButton(
-                    text: "LOGIN",
+                    text: "Continue",
                     press: () {}, key: Key("login_input"),
                   ),
                   SizedBox(height: size.height * 0.03),
