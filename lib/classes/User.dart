@@ -2,14 +2,13 @@ class User {
   String username = " ";
   String password = " ";
   Object? profile_pic;
-  List<User> user_list = [];
+  static List<User> user_list = [];
   //List<Community> communities = [];
 
   User({
     required this.username,
     required this.password,
     this.profile_pic,
-    required this.user_list,
     //this.communities,
   });
   void setUsername(String input) {

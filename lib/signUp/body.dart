@@ -5,13 +5,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../materials/RoundedButton.dart';
 import '../materials/inputField.dart';
-import '../materials/Roundedpassword.dart';
+import '../materials/RoundedPassword.dart';
 
 class Body extends StatefulWidget {
   Function addUser;
   Body({
     required Key key,
-     required this.addUser,
+    required this.addUser,
   }) : super(key: key);
 
   @override

@@ -34,6 +34,10 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
         cursorColor: FPrimaryLight,
         decoration: InputDecoration(
           hintText: "Password",
+          hintStyle : TextStyle(
+            color: FPrimaryLight,
+            fontSize: 15,
+          ),
           icon: Icon(
             Icons.lock,
             color: FPrimaryLight,

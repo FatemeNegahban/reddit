@@ -34,6 +34,10 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
             color: FPrimaryLight,
           ),
           hintText: widget.hintText,
+          hintStyle : TextStyle(
+            color: FPrimaryLight,
+            fontSize: 15,
+          ),
           border: InputBorder.none,
         ),
       ),

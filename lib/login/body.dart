@@ -1,4 +1,4 @@
-/*import 'dart:developer';
+import 'dart:developer';
 import 'dart:html';
 import 'dart:ui';
 
@@ -7,11 +7,18 @@ import '../materials/RoundedButton.dart';
 import '../materials/inputField.dart';
 import '../materials/RoundedPassword.dart';
 
-class Body extends StatelessWidget {
-  const Body({
+class Body extends StatefulWidget {
+  Function addUser;
+  Body({
     required Key key,
+    required this.addUser,
   }) : super(key: key);
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,4 +56,3 @@ class Body extends StatelessWidget {
     );
   }
 }
- */
