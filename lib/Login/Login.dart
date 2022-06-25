@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(Colors.black)
               ),
               onPressed: (){
-
+                //Navigator.push(context, MaterialPageRoute(builder: (context) => feed() ));
               },
               child: Text("Sign up",
                 style: TextStyle(
