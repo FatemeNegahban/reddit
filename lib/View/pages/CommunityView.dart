@@ -66,7 +66,7 @@ class _CommunityViewState extends State<CommunityView> {
                             trailing: Icon(Icons.edit),
                           ),
                         ),
-                        Expanded(
+                        /*Expanded(
                             child: Row(
                               children: [
                                 iconAndSub(user!.Posts!.length.toString(),
@@ -77,7 +77,7 @@ class _CommunityViewState extends State<CommunityView> {
                                     FontAwesomeIcons.comments),
                                 //  iconAndSub(user!.communities!.length.toString(),FontAwesomeIcons.users),
                               ],
-                            )),
+                            )),*/
                       ],
                     ),
                   )),
