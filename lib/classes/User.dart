@@ -1,9 +1,12 @@
+import 'Community.dart';
+import 'Post.dart';
+
 class User {
   String username = " ";
   String password = " ";
   Object? profile_pic;
   static List<User> user_list = [];
-  //List<Community> communities = [];
+  List<Community> communities = [];
 
   User({
     required this.username,
@@ -23,13 +26,14 @@ class User {
     profile_pic = input;
   }
 
+
   void addUser(User input) {
     user_list.add(input);
   }
 
-  /*void addCommunity(Community input) {
-    //communities.add(input);
-  }*/
+  void addCommunity(Community input) {
+    communities.add(input);
+  }
 
 
 }
