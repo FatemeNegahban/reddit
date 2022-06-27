@@ -33,7 +33,7 @@ class _BodyState extends State<Body> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Log in",style: TextStyle(color : Colors.white,fontSize: 27),),
+            Text("Log in",style: TextStyle(color : Colors.white,fontSize: 26),),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
