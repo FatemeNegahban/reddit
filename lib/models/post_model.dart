@@ -1,7 +1,5 @@
 import 'dart:html';
-
 import 'package:reddit/models/user_model.dart';
-
 import 'community_model.dart';
 
 class Post{
@@ -9,7 +7,7 @@ class Post{
   late final User author;
   late final Community community;
   late final String title, body;
- // late final DateTime postTime;
+  late final DateTime postTime;
   late final List<Comment> comments;
   late final int numberOfComments;
   late final List<User> likes;
