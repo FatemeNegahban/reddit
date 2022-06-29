@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../classes/Community.dart';
 import '../../classes/User.dart';
@@ -43,4 +43,4 @@ class CommunityItem extends StatelessWidget {
       ),
     );
   }
-}
+}*/

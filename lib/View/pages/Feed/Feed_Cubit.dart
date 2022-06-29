@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum HomeNavigatorState { home, profile, comments }
+enum FeedNavigatorState { home, profile, comments }
 
-class HomeNavigatorCubit extends Cubit<HomeNavigatorState> {
-  HomeNavigatorCubit() : super(HomeNavigatorState.home);
+class FeedNavigatorCubit extends Cubit<FeedNavigatorState> {
+  FeedNavigatorCubit() : super(FeedNavigatorState.home);
 
-  void showProfile() => emit(HomeNavigatorState.profile);
-  void showComments() => emit(HomeNavigatorState.comments);
-  void showHome() => emit(HomeNavigatorState.home);
+  void showProfile() => emit(FeedNavigatorState.profile);
+  void showComments() => emit(FeedNavigatorState.comments);
+  void showHome() => emit(FeedNavigatorState.home);
 }

@@ -1,79 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../navigation/navigation_cubit.dart';
 import '../Search_page.dart';
 import 'Feed_Cubit.dart';
-import 'Feed_page.dart';
+
 
 
 class FeedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => NaveCubit(),
-        child: BlocBuilder<NaveCubit, int>(builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text("Search"),
-              actions: [
-                IconButton(
-                    onPressed: () =>
-                        Navigator.of(context)
-                            .push(
-                            MaterialPageRoute(builder: (_) => SearchPage())),
-                    icon: Icon(Icons.search))
-              ],
-            ),
-            body: IndexedStack(
-              index: state,
-              children: [
-                FeedPage(),
-              ],
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: state,
-              onTap: (index) => context.read<NaveCubit>().selectTab(index),
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.black,
-                  ),
-                  //label: 'setting',
-                ),
-
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.black,
-                  ),
-                  //label: 'feed',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.black,
-                  ),
-                  //label: 'Add post',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.people,
-                    color: Colors.black,
-                  ),
-                  //label: 'Add post',
-                ),
-              ],
-            ),
-          );
-        }));
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text("Search")),
+           actions: [
+             /*BackButton(
+               color: Colors.blueGrey,
+             ),*/
+             IconButton(
+           onPressed: () =>
+           Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())), icon: Icon(Icons.search),
+           )
+            ],
+      ),
+        body: _postsListView(context),
+        );
   }
 
   Widget _postAuthorRow(BuildContext context) {
     const double avatarDiameter = 44;
     return GestureDetector(
-      onTap: () => BlocProvider.of<HomeNavigatorCubit>(context).showProfile(),
+      onTap: () => BlocProvider.of<FeedNavigatorCubit>(context).showProfile(),
       child: Row(
         children: [
           Padding(
@@ -108,7 +64,7 @@ class FeedView extends StatelessWidget {
 
   Widget _postImage() {
     return AspectRatio(
-      aspectRatio: 1,
+      aspectRatio: 2,
       child: Image(
         fit: BoxFit.cover,
         image: NetworkImage('data:image/jpeg;base64,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'),
@@ -134,24 +90,24 @@ class FeedView extends StatelessWidget {
         _postAuthorRow(context),
         _postImage(),
         _postCaption(),
-        _postCommentsButton(context),
+        //_postCommentsButton(context),
       ],
     );
   }
 
-  Widget _postCommentsButton(BuildContext context) {
+  /*Widget _postCommentsButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: GestureDetector(
         onTap: () =>
-            BlocProvider.of<HomeNavigatorCubit>(context).showComments(),
+            BlocProvider.of<FeedNavigatorCubit>(context).showComments(),
         child: Text(
           'View Comments',
           style: TextStyle(fontWeight: FontWeight.w200),
         ),
       ),
     );
-  }
+  }*/
 
   Widget _postsListView(BuildContext context) {
     return ListView.builder(

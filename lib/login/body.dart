@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:reddit/View/pages/Feed/FeedView.dart';
+import 'package:reddit/View/pages/Feed/Feed_page.dart';
 import '../materials/RoundedButton.dart';
 import '../materials/inputField.dart';
 import '../materials/RoundedPassword.dart';
@@ -33,7 +35,7 @@ class _BodyState extends State<Body> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Log in",style: TextStyle(color : Colors.white,fontSize: 26),),
+            Text("Log in",style: TextStyle(color : Colors.black,fontSize: 23),),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +46,7 @@ class _BodyState extends State<Body> {
                     onChanged: (value) {
                       _usernameController.text = value;
                     }, key: Key("username_input"),
-                    hintStyle: Colors.white,
+                    hintStyle: Colors.black,
                   ),
                   RoundedPasswordField(
                     onChanged: (value) {
@@ -53,7 +55,9 @@ class _BodyState extends State<Body> {
                   ),
                   RoundedButton(
                     text: "Continue",
-                    press: () {}, key: Key("continue_input"),
+                    press: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => FeedView())),
+        key: Key("continue_input"),
                   ),
                   SizedBox(height: size.height * 0.03),
                 ],

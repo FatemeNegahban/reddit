@@ -1,27 +1,27 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:reddit/signUp/signup.dart';
 import 'body.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
               style: ButtonStyle(
                   elevation: MaterialStateProperty.all(0),
-                  backgroundColor: MaterialStateProperty.all(Colors.black)
+                  backgroundColor: MaterialStateProperty.all(Colors.blueGrey)
               ),
-              onPressed: (){
-                //Navigator.push(context, MaterialPageRoute(builder: (context) => feed() ));
-              },
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => signUpScreen())),
               child: Text("Sign up",
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Colors.white,
                 ) ,))
         ],
         leading: IconButton(

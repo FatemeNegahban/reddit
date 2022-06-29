@@ -36,7 +36,7 @@ class NaviBar extends StatelessWidget {
                     Icons.settings,
                     color: Colors.black,
                   ),
-                  //label: 'setting',
+                  label: 'setting',
                 ),
 
                 BottomNavigationBarItem(
@@ -44,21 +44,21 @@ class NaviBar extends StatelessWidget {
                     Icons.home,
                     color: Colors.black,
                   ),
-                  //label: 'feed',
+                  label: 'feed',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     Icons.add,
                     color: Colors.black,
                   ),
-                  //label: 'Add post',
+                  label: 'Add post',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     Icons.people,
                     color: Colors.black,
                   ),
-                  //label: 'Add post',
+                  label: 'Add post',
                 ),
               ],
             ),

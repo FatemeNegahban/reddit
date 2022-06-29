@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'textField.dart';
-import 'constant.dart';
 
 class RoundedInputField extends StatefulWidget {
   final String hintText;
@@ -27,15 +26,15 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
       child: TextField(
         controller: _usernameController,
         onChanged: widget.onChanged,
-        cursorColor: FPrimaryLight,
+        cursorColor: Colors.black,
         decoration: InputDecoration(
           icon: Icon(
             widget.icon,
-            color: FPrimaryLight,
+            color: Colors.black,
           ),
           hintText: widget.hintText,
           hintStyle : TextStyle(
-            color: FPrimaryLight,
+            color: Colors.black,
             fontSize: 15,
           ),
           border: InputBorder.none,

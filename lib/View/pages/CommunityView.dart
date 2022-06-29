@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Types/post_type.dart';
 import '../../classes/Community.dart';
 import '../../classes/User.dart';
 
@@ -66,7 +67,7 @@ class _CommunityViewState extends State<CommunityView> {
                             trailing: Icon(Icons.edit),
                           ),
                         ),
-                        /*Expanded(
+                        Expanded(
                             child: Row(
                               children: [
                                 iconAndSub(user!.Posts!.length.toString(),
@@ -77,7 +78,7 @@ class _CommunityViewState extends State<CommunityView> {
                                     FontAwesomeIcons.comments),
                                 //  iconAndSub(user!.communities!.length.toString(),FontAwesomeIcons.users),
                               ],
-                            )),*/
+                            )),
                       ],
                     ),
                   )),
@@ -130,24 +131,24 @@ class _CommunityViewState extends State<CommunityView> {
     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
     child: Column(
       children: [
-        Icon(icon, size: 60, color: orangepurple),
+        //Icon(icon, size: 60, color: orangepurple),
         Text(sub),
       ],
     ),
   );
 
   Widget drawer() => Drawer(
-    backgroundColor: blackorange,
+    //backgroundColor: blackorange,
     child: ListView(
       children: <Widget>[
         DrawerHeader(
           curve: Curves.easeIn,
           child: Text(
             'Profile',
-            style: TextStyle(color: orangepurple),
+            //style: TextStyle(color: orangepurple),
           ),
           decoration: BoxDecoration(
-            color: purpleorange,
+           // color: purpleorange,
           ),
         ),
         ListTile(
@@ -228,4 +229,4 @@ class _CommunityViewState extends State<CommunityView> {
       ),
     );
   }
-}
+}*/

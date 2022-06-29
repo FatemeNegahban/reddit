@@ -9,19 +9,19 @@ class FeedNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeNavigatorCubit(),
-      child: BlocBuilder<HomeNavigatorCubit, HomeNavigatorState>(
+      create: (context) => FeedNavigatorCubit(),
+      child: BlocBuilder<FeedNavigatorCubit, FeedNavigatorState>(
           builder: (context, state) {
             return Navigator(
               pages: [
                 MaterialPage(child: (FeedView())),
-                if (state == HomeNavigatorState.profile)
+                //if (state == HomeNavigatorState.profile)
                   //MaterialPage(child: ProfileView()),
-                if (state == HomeNavigatorState.comments)
+                if (state == FeedNavigatorState.comments)
                   MaterialPage(child: Comments())
               ],
               onPopPage: (route, result) {
-                context.read<HomeNavigatorCubit>().showHome();
+                context.read<FeedNavigatorCubit>().showHome();
                 return route.didPop(result);
               },
             );

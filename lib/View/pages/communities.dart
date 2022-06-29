@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../classes/Community.dart';
 import '../../classes/User.dart';
@@ -38,4 +38,4 @@ class _CommunityPageState extends State<CommunityPage> {
       ),
     );
   }
-}
+}*/
