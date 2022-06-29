@@ -35,7 +35,6 @@ class ProfileWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Ink.image(
-          alignment: Alignment.center,
           image: image,
           fit: BoxFit.cover,
           width: 128,
