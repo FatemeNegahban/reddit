@@ -37,9 +37,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),])
                   ),
                 SizedBox(height: 30),
-                buildTextfield("Name", "user.name", false),
-                buildTextfield("Email", "user.email", false),
-                buildTextfield("Password", user.password, true),
+                buildTextfield("Name", user.name, false),
+                buildTextfield("Email", user.email, false),
+                buildTextfield("Password", //'user.password'
+                  '*******' , true),
                 SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +84,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
             contentPadding: EdgeInsets.only(bottom: 5),
         labelText: lableText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-
+        hintText: placeholder,
+        hintStyle: TextStyle(
+          fontSize: 15,
+          //fontWeight: FontWeight.bold,
+          color: Colors.black
+        )
       ),
     ),
   );
