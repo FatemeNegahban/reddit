@@ -13,9 +13,9 @@ class Community {
 
   Community(
       {required this.name,
-      required this.description,
-      required this.admins,
-      this.image}) {
+        required this.description,
+        required this.admins,
+        this.image}) {
     admins.forEach((admin) {
       users.add(admin);
     });
