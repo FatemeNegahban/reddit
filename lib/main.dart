@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reddit/View/pages/Feed/FeedView.dart';
 import 'package:reddit/login/Login.dart';
 import 'classes/User.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blueGrey
       ),
-      home: LoginScreen(),
+      home: FeedView(),
     );
   }
 }
