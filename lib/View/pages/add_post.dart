@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../classes/User.dart';
+import '../../Types/user_type.dart';
+import '../../classes/Community.dart';
 
 class add_post extends StatefulWidget {
-  User user = new User(password: '74856965', username: 'eihhh');
+  User user = new User(password: '74856965', name: 'eihhh', email: '', imagePath: '');
   add_post({
     required Key key,
     //required this.user,
@@ -15,21 +16,25 @@ class add_post extends StatefulWidget {
 
 class _add_postState extends State<add_post> {
   User? user;
-  //add community latter
-  late TextEditingController _titleController;
+  Community? community;
+  late TextEditingController titleController;
+  late TextEditingController descController;
+  late DateTime dateC;
 
   _add_postState({required this.user});
 
 
   @override
   void initState() {
-    _titleController = TextEditingController();
+    titleController = TextEditingController();
+    descController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _titleController.dispose();
+    titleController.dispose();
+    descController.dispose();
     super.dispose();
   }
 
@@ -70,7 +75,6 @@ class _add_postState extends State<add_post> {
                               hintText: "Add Title",
                               hintStyle: TextStyle(
                                   fontSize: 15,
-                                  //fontWeight: FontWeight.bold,
                                   color: Colors.grey
                               )
                           ),

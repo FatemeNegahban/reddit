@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reddit/View/pages/CommunityView.dart';
-import 'package:reddit/View/pages/Feed/FeedView.dart';
-import 'package:reddit/View/pages/Feed/Feed_page.dart';
+import 'package:reddit/View/pages/Profile_page.dart';
 import 'package:reddit/signUp/signup.dart';
 
-import 'login/Login.dart';
 
 void main() {
   runApp(const MyApp());
