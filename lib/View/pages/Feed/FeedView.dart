@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../Types/user_type.dart';
 import '../../../navigation/navigation_cubit.dart';
 import '../Search_page.dart';
-import 'Feed_Cubit.dart';
+import 'Feed_cubit.dart';
+
 
 
 class FeedView  extends StatelessWidget {
@@ -21,9 +22,6 @@ class FeedView  extends StatelessWidget {
         appBar: AppBar(
           title: Center(child: Text("Search")),
           actions: [
-            /*BackButton(
-               color: Colors.blueGrey,
-             ),*/
             IconButton(
               onPressed: () =>
                   Navigator.of(context).push(
@@ -49,7 +47,7 @@ Widget _postAuthorRow(BuildContext context) {
             width: avatarDiameter,
             height: avatarDiameter,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.white,
               shape: BoxShape.circle,
             ),
             child: ClipRRect(

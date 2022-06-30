@@ -17,7 +17,18 @@ class _ProfilePageState extends State<ProfilePage> {
     final user = UserPreferences.myUser;
 
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: //buildAppBar(context),
+      AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            color:  Colors.white,
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [

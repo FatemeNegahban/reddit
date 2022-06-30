@@ -56,10 +56,6 @@ class _add_postState extends State<add_post> {
                 fontSize: 17,
               ) ,))
       ],
-      leading: IconButton(
-        icon: Icon(Icons.close),
-        onPressed: () {  },
-      ),
     ),
         body: Container(
             child: SingleChildScrollView(
