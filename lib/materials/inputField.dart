@@ -26,7 +26,7 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
       child: TextField(
         controller: _usernameController,
         onChanged: widget.onChanged,
-        cursorColor: Colors.black,
+        cursorColor: Colors.grey,
         decoration: InputDecoration(
           icon: Icon(
             widget.icon,
@@ -34,7 +34,7 @@ class _RoundedInputFieldState extends State<RoundedInputField> {
           ),
           hintText: widget.hintText,
           hintStyle : TextStyle(
-            color: Colors.black,
+            color: Colors.grey,
             fontSize: 15,
           ),
           border: InputBorder.none,

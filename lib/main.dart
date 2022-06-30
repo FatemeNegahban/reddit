@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reddit/View/pages/CommunityView.dart';
+import 'package:reddit/View/pages/Feed/FeedView.dart';
+import 'package:reddit/View/pages/Feed/Feed_page.dart';
+import 'package:reddit/signUp/signup.dart';
 
 import 'login/Login.dart';
 
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blueGrey
       ),
-      home: LoginScreen(),
+      home: signUpScreen(),
     );
   }
 }

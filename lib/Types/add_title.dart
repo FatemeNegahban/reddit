@@ -24,16 +24,16 @@ class _add_titleState extends State<add_title> {
           children: [
             TextField(
             controller: _titleController,
-              cursorColor: Colors.white,
+              cursorColor: Colors.black,
             decoration: InputDecoration(
               hintText: "add Title",
               hintStyle : TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 17,
               ),
               icon: Icon(
                 Icons.edit,
-                color: Colors.white,
+                color: Colors.black,
               ),
               border: InputBorder.none,
             ),

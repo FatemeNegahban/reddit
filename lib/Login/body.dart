@@ -58,7 +58,7 @@ class _BodyState extends State<Body> {
                   RoundedButton(
                     text: "Continue",
                     press: () => Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => FeedView())),
+                        .push(MaterialPageRoute(builder: (_) => FeedPage())),
                     key: Key("continue_input"),
                   ),
                   SizedBox(height: size.height * 0.03),
