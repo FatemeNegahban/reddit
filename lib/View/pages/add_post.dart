@@ -72,7 +72,7 @@ class _add_postState extends State<add_post> {
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(bottom: 5),
                               floatingLabelBehavior: FloatingLabelBehavior.always,
-                              hintText: "Add Title",
+                              hintText: "       Add Title",
                               hintStyle: TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey

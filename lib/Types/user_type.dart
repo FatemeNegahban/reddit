@@ -1,9 +1,14 @@
+import 'package:reddit/classes/Community.dart';
+import 'package:reddit/classes/Post.dart';
+
 class User{
   String imagePath;
   String name;
+  List<Post> posts = [];
   final String email;
   String password;
   static List<User> user_list = [];
+  List<Community> communities = [];
 
   User({
   required this.imagePath,
