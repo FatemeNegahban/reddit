@@ -18,9 +18,9 @@ class _FeedPageState extends State<FeedPage> {
   int PageIndex = 0;
 
   List<Widget> Pagelist = <Widget>[
+    FeedView(),
     CommunityView(),
     add_post(key: Key("key")),
-    FeedView(),
     ProfilePage(),
   ];
 
@@ -40,6 +40,13 @@ class _FeedPageState extends State<FeedPage> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.people,
               color: Colors.black,
             ),
@@ -48,13 +55,6 @@ class _FeedPageState extends State<FeedPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add,
-              color: Colors.black,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
               color: Colors.black,
             ),
             label: '',

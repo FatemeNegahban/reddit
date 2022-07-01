@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reddit/materials/textField.dart';
-
-import '../classes/User.dart';
+import '../models/user_model.dart';
 
 class add_title extends StatefulWidget {
   User user;

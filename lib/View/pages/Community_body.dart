@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reddit/Types/user_type.dart';
+import '../../classes/Community.dart';
 
 class CommunityBody extends StatelessWidget{
   @override
