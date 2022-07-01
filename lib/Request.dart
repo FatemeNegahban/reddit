@@ -3,7 +3,7 @@ import 'dart:io';
 class Request {
   static void sendMassage(String massage) async{
     if (massage.isNotEmpty) {
-      await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
+      await Socket.connect("192.168.172.187", 1999).then((serverSocket) {
         serverSocket.write(massage);
         serverSocket.flush();
         print("client massage: "+ massage);
