@@ -80,8 +80,7 @@ class _BodyState extends State<Body> {
                       setState(() {
                         FocusScope.of(context).requestFocus(FocusNode());
                         if (_usernameController.text.length < 8) {
-                          _usernameError =
-                          "username must be at least 8 characters long";
+                          _usernameError = "username must be at least 8 characters long";
                           descError = "";
                         } else if (!ValidInput.hasMatch(
                             _passwordController.text)) {

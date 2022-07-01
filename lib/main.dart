@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reddit/View/pages/Profile_page.dart';
 import 'package:reddit/signUp/signup.dart';
 
 
