@@ -6,6 +6,7 @@ import 'Post.dart';
 class User {
   String username = " ";
   String password = " ";
+  String email= " ";
   Object? profile_pic;
   static List<User> user_list = [];
   List<Community> communities = [];
@@ -14,6 +15,7 @@ class User {
     required this.username,
     required this.password,
     this.profile_pic,
+    required this.email,
     //this.communities,
   });
   void setUsername(String input) {
@@ -28,9 +30,9 @@ class User {
     profile_pic = input;
   }
 
-  void addUser(User input) {
+ /* void addUser(User input) {
     user_list.add(input);
-  }
+  }*/
 
   void addCommunity(Community input) {
     communities.add(input);

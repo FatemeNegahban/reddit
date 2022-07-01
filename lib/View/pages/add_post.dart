@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../classes/User.dart';
 
 class add_post extends StatefulWidget {
-  User user = new User(password: '74856965', username: 'eihhh');
+  User user = new User(password: '74856965', username: 'eihhh',email: 'userEmail');
   add_post({
     required Key key,
     //required this.user,

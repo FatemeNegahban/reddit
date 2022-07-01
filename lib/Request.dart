@@ -5,7 +5,6 @@ class Request {
   static void writer(String write) async {
     if (write != null && write.isNotEmpty) {
       await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
-        write = (write.length + 11).toString() + 'user-' + write;
         serverSocket.write(write);
         serverSocket.flush();
       });
@@ -28,7 +27,6 @@ class Request {
     String listen = '';
     if (write != null && write.isNotEmpty) {
       await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
-        write ='user-' + write;
         serverSocket.write(write);
         serverSocket.flush();
         print('write: ' + write);
