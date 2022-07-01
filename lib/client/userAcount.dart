@@ -40,8 +40,12 @@ class userAccounts {
     return true;
   }
 
+  int getLength(){
+    return _accounts.length;
+  }
+
   static bool foundEmail(String input) {
-    for (int i = 0; i < getLength(); i++) {
+    for (int i = 0; i < _accounts.length ; i++) {
       if (accounts[i].email == input) {
         currentAccount = i;
         return false;
@@ -54,7 +58,7 @@ class userAccounts {
     if (oldUserName == input) {
       return false;
     }
-    for (int i = 0; i < getLength(); i++) {
+    for (int i = 0; i < _accounts.length; i++) {
       if (accounts[i].name == input) {
         return true;
       }
@@ -67,7 +71,7 @@ class userAccounts {
     if (oldEmail == input) {
       return false;
     }
-    for (int i = 0; i < getLength(); i++) {
+    for (int i = 0; i < _accounts.length; i++) {
       if (accounts[i].email == input) {
         return true;
       }
