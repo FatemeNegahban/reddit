@@ -1,18 +1,74 @@
 import 'package:flutter/material.dart';
 
 class Comments extends StatefulWidget {
+  String postId;
+  String ownerId;
+
+  Comments({
+    required this.postId,
+    required this.ownerId,
+});
 
   @override
-  State<Comments> createState() => _CommentsState();
+  CommentsState createState() => CommentsState(
+    postId: this.postId,
+    ownerId: this.ownerId,
+  );
 }
 
-class _CommentsState extends State<Comments> {
+class CommentsState extends State<Comments> {
+  TextEditingController commentController = TextEditingController();
+  final String postId;
+  final String ownerId;
+
+  CommentsState({
+    required this.postId,
+    required this.ownerId,
+  });
+
+  buildComments(){
+    return Text("Comments");
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Text('Comments');
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text("Comments")),
+      ),
+      //header(context,titleText: "Comments"),
+      body: Column(
+        children: <Widget>[
+          Expanded( child: buildComments()),
+          Divider(),
+          ListTile(
+            title:TextFormField(
+              controller: commentController,
+              decoration: InputDecoration(
+                labelText: "Write a Comment...",
+              ),
+            ),
+            trailing: OutlinedButton(
+              onPressed: () => print('Add Comment'),
+
+              //borderside: BorderSide.none,
+              child: Text("Post"),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
-
+ 
+class Comment extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+  
+}
 
 
   /*Widget _commentView() {

@@ -5,7 +5,7 @@ class Post{
   late String? title;
   DateTime createdAt=DateTime.now();
   Community? community;
-  String? id;
+  String id;
   String? image;
   List<User>? likeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
   List<User>? dislikeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
@@ -13,5 +13,5 @@ class Post{
   User? user;
   List<Post> posts = [];
 
-  Post({this.title, this.community, this.id, this.image , this.dislikeCount , this.likeCount,this.comment,this.user});
+  Post({this.title, this.community, required this.id, this.image , this.dislikeCount , this.likeCount,this.comment,this.user});
 }

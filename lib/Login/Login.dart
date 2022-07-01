@@ -24,10 +24,10 @@ class LoginScreen extends StatelessWidget {
                   color: Colors.white,
                 ) ,))
         ],
-        leading: IconButton(
+        /*leading: IconButton(
           icon: Icon(Icons.close),
           onPressed: () {  },
-        ),
+        ),*/
       ),
       body: Body(key: Key("value"), addUser: (){}),
     );

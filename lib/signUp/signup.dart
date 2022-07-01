@@ -25,10 +25,10 @@ class signUpScreen extends StatelessWidget {
                   fontSize: 17,
                 ) ,))
         ],
-        leading: IconButton(
+        /*leading: IconButton(
           icon: Icon(Icons.close),
           onPressed: () {  },
-        ),
+        ),*/
       ),
       body: Body(key: Key("value"), addUser: (){}),
     );

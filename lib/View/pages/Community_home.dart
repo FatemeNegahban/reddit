@@ -1,53 +1,59 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:reddit/Types/Comments.dart';
 import 'package:reddit/classes/Community.dart';
-import '../../../Types/user_type.dart';
-import '../../../classes/Post.dart';
-import '../../../navigation/navigation_cubit.dart';
-import '../Search_page.dart';
-import 'Feed_cubit.dart';
 
+import '../../Types/Comments.dart';
+import '../../Types/user_type.dart';
+import '../../classes/Post.dart';
+import 'Feed/Feed_cubit.dart';
 
+class CommunityHome extends StatefulWidget{
+  late int Index;
 
-class FeedView  extends StatefulWidget {
+  CommunityHome({
+    required this.Index,
+  });
+
   @override
-  State<FeedView> createState() => _FeedViewState();
+  State<CommunityHome> createState() => _CommunityHomeState();
 }
 
-class _FeedViewState extends State<FeedView> {
+class _CommunityHomeState extends State<CommunityHome> {
   User myuser = UserPreferences.myUser;
-  int index = 0;
+  //int input = 0;
   bool Liked = false , Disliked = false;
   Post post = new Post(id: '');
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => NaveCubit(),
-        child: BlocBuilder<NaveCubit, int>(builder: (context, state)
-    {
-      return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("Search")),
-          actions: [
-            IconButton(
-              onPressed: () =>
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => SearchPage())),
-              icon: Icon(Icons.search),
-            )
-          ],
-        ),
-        body: ListView.builder(
-            itemCount: CommunitiesData.length,
-            itemBuilder: (context, index) {
-               return Column(
+    return DefaultTabController(
+        length: 1,
+        child: Scaffold(
+          appBar: AppBar(
+            /*leading: BackButton(
+              color: Colors.white,
+            ),*/
+            backgroundColor: Colors.blueGrey,
+            bottom: TabBar(
+              tabs: [
+                Tab(
+                  height: 140.0,
+                  icon: CircleAvatar(radius: 50,backgroundImage: NetworkImage(CommunitiesData[widget.Index].profileimage),),
+                  text: CommunitiesData[widget.Index].name,
+                ),
+              ],
+            ),
+          ),
+          body: ListView.builder(
+            itemCount: 1,
+              itemBuilder: (context, index){
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _postAuthorRow(context,index),
-                  _postImage(index),
-                  _postdesc(index),
+                  _postAuthorRow(context,widget.Index),
+                  _postImage(widget.Index),
+                  _postdesc(widget.Index),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -100,10 +106,10 @@ class _FeedViewState extends State<FeedView> {
                   )
                 ],
               );
-            }
+              }
+          ),
         )
-      );
-    }));
+    );
   }
 
   ShowComments(BuildContext context,{required String postId , required String ownerId }){
@@ -117,7 +123,7 @@ class _FeedViewState extends State<FeedView> {
 
 }
 
-  Widget _postAuthorRow(BuildContext context,int index) {
+Widget _postAuthorRow(BuildContext context,int index) {
   const double avatarDiameter = 44;
   return GestureDetector(
     onTap: () => BlocProvider.of<FeedNavigatorCubit>(context).showProfile(),
@@ -153,7 +159,7 @@ class _FeedViewState extends State<FeedView> {
   );
 }
 
-  Widget _postImage(int index) {
+Widget _postImage(int index) {
   return AspectRatio(
     aspectRatio: 2,
     child: Image(
@@ -163,7 +169,7 @@ class _FeedViewState extends State<FeedView> {
   );
 }
 
-  Widget _postdesc(int index) {
+Widget _postdesc(int index) {
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 8,
