@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:reddit/Request.dart';
 import 'package:reddit/View/pages/Feed/FeedView.dart';
 import 'package:reddit/View/pages/Feed/Feed_page.dart';
 import 'package:reddit/login/Login.dart';
@@ -75,7 +76,10 @@ class _BodyState extends State<Body> {
                         primary: Colors.blueGrey,
                         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20)),
                     onPressed: (){
-                      setState(() {
+                      setState(() async {
+                        
+                        String ans= await Request.sendThenGetMassage("signIn-" + _usernameController.text + "-" + _passwordController.text + "-,");
+
                         if (_usernameController.text.length < 8) {
                           _usernameError =
                               "username must be at least 8 characters long";
@@ -84,7 +88,18 @@ class _BodyState extends State<Body> {
                             _passwordController.text)) {
                           _usernameError = "";
                           descError = "can't use these Characters";
-                        } else {
+                        }
+
+                        else if(ans == "_invalid"){
+                          _usernameError = "";
+                          descError = "username or password is wrong! ";
+                        }
+
+
+
+
+
+                        else {
                           _usernameError = "";
                           descError = "";
                           if (isOk == true) {

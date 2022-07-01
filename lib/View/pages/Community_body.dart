@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../classes/Community.dart';
+import 'Community_home.dart';
 
 class CommunityBody extends StatelessWidget{
   @override
@@ -11,12 +12,12 @@ class CommunityBody extends StatelessWidget{
               itemCount: CommunitiesData.length,
                 itemBuilder: (context, index) => CommunityItem(
                   community: CommunitiesData[index],
-                  /*press: () => Navigator.push(
+                  press: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MessagesScreen(),
+                      builder: (context) => CommunityHome(Index: index,),
                     ),
-                  ),*/
+                  ),
                 ),
             ),
         ),
@@ -28,7 +29,7 @@ class CommunityBody extends StatelessWidget{
 class CommunityItem extends StatelessWidget{
   const CommunityItem({
     Key? key,
-    required this.community,
+    required this.community, required Future Function() press,
 }) : super(key: key);
   final Community community;
 

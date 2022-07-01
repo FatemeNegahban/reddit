@@ -2,8 +2,8 @@ import 'dart:io';
 
 class Request {
   static void sendMassage(String massage) async{
-    if (massage !=null && massage.isNotEmpty) {
-      await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
+    if (massage.isNotEmpty) {
+      await Socket.connect("192.168.172.187", 1999).then((serverSocket) {
         serverSocket.write(massage);
         serverSocket.flush();
         print("client massage: "+ massage);
@@ -15,7 +15,7 @@ class Request {
 
   static Future<String> getMassage() async{
     String serverMassage = '';
-    await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
+    await Socket.connect("192.168.172.187", 1999).then((serverSocket) {
       serverSocket.listen((socket) {
         serverMassage = String.fromCharCodes(socket).trim();
       }).onDone((){
@@ -27,8 +27,8 @@ class Request {
 
   static Future<String> sendThenGetMassage(String massage) async {
     String serverMassage = '';
-    if (massage !=null && massage.isNotEmpty) {
-      await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
+    if (massage.isNotEmpty) {
+      await Socket.connect("192.168.172.187", 1999).then((serverSocket) {
         print('_WE ARE Connect!!!');
         serverSocket.write(massage);
         serverSocket.flush();
