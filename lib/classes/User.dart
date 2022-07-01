@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:reddit/Request.dart';
 import 'Community.dart';
 import 'Post.dart';
 
@@ -25,7 +27,6 @@ class User {
   void setProfilePic(Object input) {
     profile_pic = input;
   }
-
 
   void addUser(User input) {
     user_list.add(input);
