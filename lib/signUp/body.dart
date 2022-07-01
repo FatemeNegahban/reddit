@@ -53,7 +53,7 @@ class _BodyState extends State<Body> {
                   RoundedInputField(
                     hintText: "Email",
                     onChanged: (value) {
-                      _usernameController.text = value;
+                      _emailController.text = value;
                     }, key: Key("email_input"),
                     hintStyle: Colors.white,
                   ),
@@ -82,14 +82,13 @@ class _BodyState extends State<Body> {
                         if (_usernameController.text.length < 8) {
                           _usernameError = "username must be at least 8 characters long";
                           descError = "";
+                        }  else if (_emailController.text.length < 8) {
+                          emailError = "";
+                          descError = "Email isn't Correct";
                         } else if (!ValidInput.hasMatch(
                             _passwordController.text)) {
                           _usernameError = "";
                           descError = "can't use these Characters";
-                        } else if (!ValidInput.hasMatch(
-                            _emailController.text)) {
-                          _usernameError = "";
-                          descError = "Email isn't Correct";
                         } else {
                           _usernameError = "";
                           descError = "";
