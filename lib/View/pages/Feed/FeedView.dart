@@ -1,9 +1,9 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reddit/Types/Comments.dart';
 import 'package:reddit/classes/Community.dart';
 import '../../../Types/user_type.dart';
+import '../../../classes/Post.dart';
 import '../../../navigation/navigation_cubit.dart';
 import '../Search_page.dart';
 import 'Feed_cubit.dart';
@@ -17,8 +17,9 @@ class FeedView  extends StatefulWidget {
 
 class _FeedViewState extends State<FeedView> {
   User myuser = UserPreferences.myUser;
-
   int index = 0;
+  bool Liked = false , Disliked = false;
+  Post post = new Post();
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +39,78 @@ class _FeedViewState extends State<FeedView> {
             )
           ],
         ),
-        body: _postsListView(context),
+        body: ListView.builder(
+            itemCount: CommunitiesData.length,
+            itemBuilder: (context, index) {
+              //return _postView(context,index);
+               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _postAuthorRow(context,index),
+                  _postImage(index),
+                  _postdesc(index),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
+                      GestureDetector(
+                        onTap: () async {
+                          setState((){
+                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                              post.likeCount!.add(UserPreferences.myUser);
+                              post.likeCount!.remove(UserPreferences.myUser);
+                            }
+                            else if( post.likeCount!.contains(UserPreferences.myUser)){
+                              post.dislikeCount!.remove(UserPreferences.myUser);
+                            }
+                            post.likeCount!.add(UserPreferences.myUser);
+                          });
+                        },
+                        child: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
+                      GestureDetector(
+                        onTap: () async {
+                          setState((){
+                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                              post.likeCount!.remove(UserPreferences.myUser);
+                              post.dislikeCount!.add(UserPreferences.myUser);
+                            }
+                            else if( post.dislikeCount!.contains(UserPreferences.myUser)){
+                              post.dislikeCount!.remove(UserPreferences.myUser);
+                            }
+                            post.dislikeCount!.add(UserPreferences.myUser);
+                          });
+                        },
+                        child: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
+                      ),
+                      Padding(padding: EdgeInsets.only(right: 20.0)),
+                      GestureDetector(
+                        onTap: () => ShowComments(context,postId: post.id, ownerId: myuser.name,),
+                        child: Icon( Icons.chat, size: 27.0,),
+                      )
+                    ],
+                  )
+                ],
+              );
+            }
+        )
       );
     }));
-  }}
+  }
 
-Widget _postAuthorRow(BuildContext context,int index) {
+  ShowComments(BuildContext context,{String? postId , required String ownerId }){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return Comments(
+        //postId: postId,
+        //ownerId: ownerId,
+      );
+    }));
+  }
+
+}
+
+  Widget _postAuthorRow(BuildContext context,int index) {
   const double avatarDiameter = 44;
   return GestureDetector(
     onTap: () => BlocProvider.of<FeedNavigatorCubit>(context).showProfile(),
@@ -79,7 +146,7 @@ Widget _postAuthorRow(BuildContext context,int index) {
   );
 }
 
-Widget _postImage(int index) {
+  Widget _postImage(int index) {
   return AspectRatio(
     aspectRatio: 2,
     child: Image(
@@ -89,7 +156,7 @@ Widget _postImage(int index) {
   );
 }
 
-Widget _postdesc(int index) {
+  Widget _postdesc(int index) {
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 8,
@@ -98,42 +165,4 @@ Widget _postdesc(int index) {
     child: Text(
         CommunitiesData[index].description),
   );
-}
-
-Widget _postView(BuildContext context , int index) {
-  bool Liked = false , Disliked = false;
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      _postAuthorRow(context,index),
-      _postImage(index),
-      _postdesc(index),
-      Container(
-        child: Stack(
-          children: [
-            Row(
-              children: [
-                Container(
-                  child: IconButton(
-                    icon: Icon( Liked ? Icons.favorite : Icons.favorite_border , size: 33,),
-                    onPressed: () {
-
-                    },),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    ],
-  );
-}
-
-
-Widget _postsListView(BuildContext context) {
-  return ListView.builder(
-      itemCount: CommunitiesData.length,
-      itemBuilder: (context, index) {
-        return _postView(context,index);
-      });
 }

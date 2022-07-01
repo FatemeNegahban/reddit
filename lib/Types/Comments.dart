@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Comments extends StatelessWidget {
+class Comments extends StatefulWidget {
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Comments'),
-      ),
-      body: _commentsListView(),
-    );
-  }
+  State<Comments> createState() => _CommentsState();
+}
 
-  Widget _commentView() {
+class _CommentsState extends State<Comments> {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Comments');
+  }
+}
+
+
+
+  /*Widget _commentView() {
     const double avatarDiameter = 44;
     return Row(
       children: [
@@ -49,7 +52,7 @@ class Comments extends StatelessWidget {
       },
     );
   }
-}
+}*/
 
 
 
