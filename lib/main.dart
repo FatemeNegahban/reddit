@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reddit/View/pages/Community_home.dart';
 import 'package:reddit/View/pages/Feed/Feed_page.dart';
 import 'package:reddit/View/pages/add_post.dart';
 import 'package:reddit/signUp/signup.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blueGrey
       ),
-      home: FeedPage(),
+      home: CommunityHome(Index: 1,),
     );
   }
 }

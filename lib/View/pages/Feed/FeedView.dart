@@ -42,7 +42,6 @@ class _FeedViewState extends State<FeedView> {
         body: ListView.builder(
             itemCount: CommunitiesData.length,
             itemBuilder: (context, index) {
-              //return _postView(context,index);
                return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
