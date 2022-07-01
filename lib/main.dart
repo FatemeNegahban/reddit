@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blueGrey
       ),
-      home: CommunityHome(Index: 1,),
+      home: signUpScreen(),
     );
   }
 }
