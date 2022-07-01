@@ -1,7 +1,6 @@
-import 'dart:convert';
+/*import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../../helper/demo_values.dart';
-class PostCard extends StatelessWidget {
+/*class PostCard extends StatelessWidget {
   const PostCard({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class PostCard extends StatelessWidget {
     );
   }
 }
-
+*/
 class _Post extends StatelessWidget {
   const _Post({Key? key}) : super(key: key);
   @override
@@ -128,7 +127,7 @@ class _PostTimeStamp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 2,
-      child: Text(DemoValues.postTime),
+      //child: Text(DemoValues.postTime),
     );
   }
-}
+}*/
