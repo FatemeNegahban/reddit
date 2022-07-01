@@ -31,9 +31,9 @@ class _CommunityHomeState extends State<CommunityHome> {
         length: 1,
         child: Scaffold(
           appBar: AppBar(
-            leading: BackButton(
+            /*leading: BackButton(
               color: Colors.white,
-            ),
+            ),*/
             backgroundColor: Colors.blueGrey,
             bottom: TabBar(
               tabs: [
