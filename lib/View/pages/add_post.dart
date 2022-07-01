@@ -14,6 +14,8 @@ class add_post extends StatefulWidget {
   State<add_post> createState() => _add_postState(user: this.user);
 }
 
+
+
 class _add_postState extends State<add_post> {
   User? user;
   Community? community;
