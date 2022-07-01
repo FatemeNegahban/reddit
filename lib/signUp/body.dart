@@ -2,10 +2,9 @@ import 'dart:developer';
 //import 'dart:html';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:reddit/View/pages/Feed/FeedView.dart';
-import 'package:reddit/View/pages/Feed/Feed_page.dart';
-import '../materials/RoundedButton.dart';
-import '../materials/inputField.dart';
+import '../Types/user_type.dart';
+import '../View/pages/Feed/Feed_page.dart';
+import '../materials/InputField.dart';
 import '../materials/RoundedPassword.dart';
 
 class Body extends StatefulWidget {
@@ -21,11 +20,19 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   Function addUser;
+  String _usernameError = "";
+  String _PasswordError = "";
+  String descError = "";
+  String emailError = "";
+  bool isOk = true;
+  RegExp ValidInput = RegExp(
+      "^(?=.{8,17}\$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%^&*(),.?:{}|<>]).*");
   TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   _BodyState({
     required this.addUser,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,7 @@ class _BodyState extends State<Body> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Create an account",style: TextStyle(color : Colors.black,fontSize: 23),),
+            Text("Create an account",style: TextStyle(color : Colors.white,fontSize: 27),),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +52,7 @@ class _BodyState extends State<Body> {
                   RoundedInputField(
                     hintText: "Email",
                     onChanged: (value) {
-                      _usernameController.text = value;
+                      _emailController.text = value;
                     }, key: Key("email_input"),
                     hintStyle: Colors.white,
                   ),
@@ -59,12 +66,48 @@ class _BodyState extends State<Body> {
                   RoundedPasswordField(
                     onChanged: (value) {
                       _passwordController.text = value;
-                    }, key: Key("password_input"),
-                  ),
-                  RoundedButton(
-                    text: "Continue",
-                    press: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => FeedPage())),
+                    }, key: Key("password_input"),),
+                  ElevatedButton(
+                    child: Text(
+                      "Continue",
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blueGrey,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 20)),
+                    onPressed: () {
+                      setState(() {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        if (_usernameController.text.length < 8) {
+                          _usernameError = "username must be at least 8 characters long";
+                          descError = "";
+                        }  else if (_emailController.text.length < 8) {
+                          emailError = "";
+                          descError = "Email isn't Correct";
+                        } else if (!ValidInput.hasMatch(
+                            _passwordController.text)) {
+                          _usernameError = "";
+                          descError = "can't use these Characters";
+                        } else {
+                          _usernameError = "";
+                          descError = "";
+                          if (isOk == true) {
+                            User user = new User(
+                                name: _usernameController.text,
+                                password: _passwordController.text,
+                                imagePath: '',
+                                email: _emailController.text);
+                            Future.delayed(Duration(milliseconds: 500), () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FeedPage()));
+                            });
+                          } else
+                            print("Error");
+                        }
+                      });
+                    },
                     key: Key("continue_input"),
                   ),
                   SizedBox(height: size.height * 0.03),

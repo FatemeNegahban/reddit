@@ -9,8 +9,6 @@ class CommunityView extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Search")),
-          leading: BackButton(
-          ),
           actions: [
           IconButton(
           icon: Icon(Icons.search),

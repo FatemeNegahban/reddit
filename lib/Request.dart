@@ -1,47 +1,50 @@
 import 'dart:io';
-import 'main.dart';
 
 class Request {
-  static void writer(String write) async {
-    if (write != null && write.isNotEmpty) {
+  static void sendMassage(String massage) async{
+    if (massage.isNotEmpty) {
       await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
-        serverSocket.write(write);
+        serverSocket.write(massage);
         serverSocket.flush();
+        print("client massage: "+ massage);
       });
     } else {
       print("invalid write");
-
-
     }
   }
 
-  static Future<String> listener() async {
-    String listen = '';
+  static Future<String> getMassage() async{
+    String serverMassage = '';
     await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
       serverSocket.listen((socket) {
-        listen = String.fromCharCodes(socket).trim(); //.substring(2);
-      }).onDone((){});
+        serverMassage = String.fromCharCodes(socket).trim();
+      }).onDone((){
+        print("Server massage: " + serverMassage);
+      });
     });
-    return listen;
+    return serverMassage;
   }
 
-  static Future<String> writerListener(String write) async {
-    String listen = '';
-    if (write != null && write.isNotEmpty) {
+  static Future<String> sendThenGetMassage(String massage) async {
+    String serverMassage = '';
+    if (massage.isNotEmpty) {
       await Socket.connect("192.168.172.187", 1991).then((serverSocket) {
-        serverSocket.write(write);
+        print('_WE ARE Connect!!!');
+        serverSocket.write(massage);
         serverSocket.flush();
-        print('write: ' + write);
+        print('client massage: ' + massage);
         serverSocket.listen((socket) {
-          listen = String.fromCharCodes(socket).trim(); //substring(2);
+          serverMassage = String.fromCharCodes(socket).trim();
         }).onDone(() {
-          print("listen: " + listen);
+          print("server massage: " + serverMassage);
         });
         // serverSocket.close();
       });
     } else {
-      print("invalid write");
+      print("_invalid massage!");
     }
-    return listen;
+    return serverMassage;
   }
+
+
 }

@@ -1,16 +1,18 @@
+import '../Types/user_type.dart';
 import 'Community.dart';
-import 'User.dart';
 
 class Post{
   late String title;
-  late String content;
+  //late String content;
   DateTime createdAt=DateTime.now();
   Community? community;
-  Object? id;
-  Object? image;
+  String? id;
+  String? image;
   int? likeCount;
+  int? dislikeCount;
   List<String>? comments;
   User? user;
+  List<Post> posts = [];
 
-  Post({required this.title, required this.content, this.community, this.id, this.image, this.likeCount,this.comments,this.user});
+  Post({required this.title, this.community, this.id, this.image, this.likeCount,this.comments,this.user});
 }
