@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reddit/classes/User.dart';
-
 import '../Request.dart';
+import '../Types/user_type.dart';
 
 class userAccounts {
   static List<User> _accounts = List.empty(growable: true);
   static int _currentAccount = 0;
   static bool key = false;
-
 
  static List<User> get accounts => _accounts;
 
@@ -22,23 +20,19 @@ class userAccounts {
   }
 
   static User addAccount(User user){
-
     if(!key){
-      Request.writerListener(
-          'signUp-' + user.username + '-' + user.email + '-' + user.password+',');
+      Request.sendThenGetMassage(
+          'signUp-' + user.name + '-' + user.email + '-' + user.password+',');
     }if(key){
-      _accounts.add(User(password: user.password, username: user.username, email: user.email));
+      _accounts.add(User(password: user.password, name: user.name, email: user.email, imagePath: ''));
     }
     return user;
   }
 
-  static int getLength() {
-    return _accounts.length;
-  }
 
   static bool foundUserId(String input) {
-    for (int i = 0; i < getLength(); i++) {
-      if (accounts[i].username == input) {
+    for (int i = 0 ; i < _accounts.length ; i++) {
+      if (accounts[i].name == input) {
         currentAccount = i;
         return false;
       }
@@ -61,11 +55,11 @@ class userAccounts {
       return false;
     }
     for (int i = 0; i < getLength(); i++) {
-      if (accounts[i].username == input) {
+      if (accounts[i].name == input) {
         return true;
       }
     }
-    accounts[currentAccount].username = input;
+    accounts[currentAccount].name = input;
     return false;
   }
 

@@ -1,7 +1,7 @@
 class User{
   String imagePath;
   String name;
-  final String email;
+  late final String email;
   String password;
   static List<User> user_list = [];
 
