@@ -2,17 +2,16 @@ import '../Types/user_type.dart';
 import 'Community.dart';
 
 class Post{
-  late String title;
-  //late String content;
+  late String? title;
   DateTime createdAt=DateTime.now();
   Community? community;
   String? id;
   String? image;
-  int? likeCount;
-  int? dislikeCount;
-  List<String>? comments;
+  List<User>? likeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
+  List<User>? dislikeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
+  List<String>? comment ;
   User? user;
   List<Post> posts = [];
 
-  Post({required this.title, this.community, this.id, this.image, this.likeCount,this.comments,this.user});
+  Post({this.title, this.community, this.id, this.image , this.dislikeCount , this.likeCount,this.comment,this.user});
 }
