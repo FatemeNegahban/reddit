@@ -19,7 +19,7 @@ class _FeedViewState extends State<FeedView> {
   User myuser = UserPreferences.myUser;
   int index = 0;
   bool Liked = false , Disliked = false;
-  Post post = new Post();
+  Post post = new Post(id: '');
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +59,15 @@ class _FeedViewState extends State<FeedView> {
                             if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
                               post.likeCount!.add(UserPreferences.myUser);
                               post.likeCount!.remove(UserPreferences.myUser);
+                              Disliked = !Disliked;
+                              Liked = !Liked;
                             }
                             else if( post.likeCount!.contains(UserPreferences.myUser)){
                               post.dislikeCount!.remove(UserPreferences.myUser);
+                              Liked = !Liked;
                             }
                             post.likeCount!.add(UserPreferences.myUser);
+                            Liked = !Liked;
                           });
                         },
                         child: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
@@ -75,11 +79,15 @@ class _FeedViewState extends State<FeedView> {
                             if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
                               post.likeCount!.remove(UserPreferences.myUser);
                               post.dislikeCount!.add(UserPreferences.myUser);
+                              Disliked = !Disliked;
+                              Liked = !Liked;
                             }
                             else if( post.dislikeCount!.contains(UserPreferences.myUser)){
                               post.dislikeCount!.remove(UserPreferences.myUser);
+                              Disliked = !Disliked;
                             }
                             post.dislikeCount!.add(UserPreferences.myUser);
+                            Disliked = !Disliked;
                           });
                         },
                         child: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
@@ -99,11 +107,11 @@ class _FeedViewState extends State<FeedView> {
     }));
   }
 
-  ShowComments(BuildContext context,{String? postId , required String ownerId }){
+  ShowComments(BuildContext context,{required String postId , required String ownerId }){
     Navigator.push(context, MaterialPageRoute(builder: (context){
       return Comments(
-        //postId: postId,
-        //ownerId: ownerId,
+        postId: postId,
+        ownerId: ownerId,
       );
     }));
   }
