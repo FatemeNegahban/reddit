@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:reddit/Request.dart';
 import '../Types/user_type.dart';
 import '../View/pages/Feed/Feed_page.dart';
 import '../materials/InputField.dart';
@@ -77,7 +78,12 @@ class _BodyState extends State<Body> {
                         padding: EdgeInsets.symmetric(
                             horizontal: 40, vertical: 20)),
                     onPressed: () {
-                      setState(() {
+                      setState(() async {
+                        
+                        String ans= await Request.sendThenGetMassage("signUp-" + _usernameController.text + "-" + _emailController.text + "-" + _passwordController.text + "-,");
+
+
+
                         FocusScope.of(context).requestFocus(FocusNode());
                         if (_usernameController.text.length < 8) {
                           _usernameError = "username must be at least 8 characters long";
@@ -89,7 +95,20 @@ class _BodyState extends State<Body> {
                             _passwordController.text)) {
                           _usernameError = "";
                           descError = "can't use these Characters";
-                        } else {
+                        }
+
+
+
+                        else if(ans == "_invalid"){
+                          _usernameError = "";
+                          emailError = "";
+                          descError = "this id/email already exist";
+                        }
+
+
+
+
+                        else {
                           _usernameError = "";
                           descError = "";
                           if (isOk == true) {
