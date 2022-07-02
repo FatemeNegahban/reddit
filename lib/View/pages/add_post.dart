@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reddit/Request.dart';
 import '../../Types/user_type.dart';
 import '../../classes/Community.dart';
 
@@ -54,7 +55,9 @@ class _add_postState extends State<add_post> {
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.blueGrey)
             ),
-            onPressed:  (){
+            onPressed:  () async {
+              String ans = await Request.sendThenGetMassage("addPost_" + titleController.text + "-" + descController.text + "-,");
+              print(ans);
             },
             child: Text("Next",
               style: TextStyle(

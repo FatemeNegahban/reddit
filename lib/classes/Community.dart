@@ -79,7 +79,6 @@ class Community {
     return posts.length;
   }
 }
-
 List CommunitiesData = [
   Community(
     name: "Fooditi",
