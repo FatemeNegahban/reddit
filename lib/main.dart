@@ -20,8 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blueGrey
       ),
-      home: FeedView(),
-      //home: signUpScreen(),
+      home: signUpScreen(),
     );
   }
 }
