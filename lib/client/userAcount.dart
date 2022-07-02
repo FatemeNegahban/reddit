@@ -72,15 +72,15 @@ class userAccounts {
       return false;
     }
     for (int i = 0; i < _accounts.length; i++) {
-      if (accounts[i].email == input) {
+      if (_accounts[i].email == input) {
         return true;
       }
     }
-    accounts[currentAccount].email = input;
+    _accounts[currentAccount].email = input;
     return false;
   }
 
-  static bool editPassword(String input) {
+  static bool editPassword(String input){
     return true;
   }
 }

@@ -76,13 +76,10 @@ class _BodyState extends State<Body> {
                         primary: Colors.blueGrey,
                         padding: EdgeInsets.symmetric(
                             horizontal: 40, vertical: 20)),
-                    onPressed: () {
-                      setState(() async {
-                        
-                        String ans= await Request.sendThenGetMassage("signUp-" + _usernameController.text + "-" + _emailController.text + "-" + _passwordController.text + "-,");
+                    onPressed: () async {
+                      String ans= await Request.sendThenGetMassage("signUp-" + _usernameController.text + "-" + _emailController.text + "-" + _passwordController.text + "-,");
 
-
-
+                      setState(()  {
                         FocusScope.of(context).requestFocus(FocusNode());
                         if (_usernameController.text.length < 8) {
                           _usernameError = "username must be at least 8 characters long";

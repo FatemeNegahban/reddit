@@ -5,7 +5,7 @@ class User{
   String imagePath;
   String name;
   List<Post> posts = [];
-  final String email;
+  late final String email;
   String password;
   static List<User> user_list = [];
   List<Community> communities = [];

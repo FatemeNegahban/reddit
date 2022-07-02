@@ -54,8 +54,7 @@ class _add_postState extends State<add_post> {
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.blueGrey)
             ),
-            onPressed: (){
-
+            onPressed:  (){
             },
             child: Text("Next",
               style: TextStyle(

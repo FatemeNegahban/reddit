@@ -26,84 +26,84 @@ class _FeedViewState extends State<FeedView> {
     return BlocProvider(
         create: (context) => NaveCubit(),
         child: BlocBuilder<NaveCubit, int>(builder: (context, state)
-    {
-      return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("Search")),
-          actions: [
-            IconButton(
-              onPressed: () =>
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => SearchPage())),
-              icon: Icon(Icons.search),
-            )
-          ],
-        ),
-        body: ListView.builder(
-            itemCount: CommunitiesData.length,
-            itemBuilder: (context, index) {
-               return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _postAuthorRow(context,index),
-                  _postImage(index),
-                  _postdesc(index),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
-                      GestureDetector(
-                        onTap: () async {
-                          setState((){
-                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
-                              post.likeCount!.add(UserPreferences.myUser);
-                              post.likeCount!.remove(UserPreferences.myUser);
-                              Disliked = !Disliked;
-                              Liked = !Liked;
-                            }
-                            else if( post.likeCount!.contains(UserPreferences.myUser)){
-                              post.dislikeCount!.remove(UserPreferences.myUser);
-                              Liked = !Liked;
-                            }
-                            post.likeCount!.add(UserPreferences.myUser);
-                            Liked = !Liked;
-                          });
-                        },
-                        child: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
-                      GestureDetector(
-                        onTap: () async {
-                          setState((){
-                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
-                              post.likeCount!.remove(UserPreferences.myUser);
-                              post.dislikeCount!.add(UserPreferences.myUser);
-                              Disliked = !Disliked;
-                              Liked = !Liked;
-                            }
-                            else if( post.dislikeCount!.contains(UserPreferences.myUser)){
-                              post.dislikeCount!.remove(UserPreferences.myUser);
-                              Disliked = !Disliked;
-                            }
-                            post.dislikeCount!.add(UserPreferences.myUser);
-                            Disliked = !Disliked;
-                          });
-                        },
-                        child: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
-                      ),
-                      Padding(padding: EdgeInsets.only(right: 20.0)),
-                      GestureDetector(
-                        onTap: () => ShowComments(context,postId: post.id, ownerId: myuser.name,),
-                        child: Icon( Icons.chat, size: 27.0,),
-                      )
-                    ],
+        {
+          return Scaffold(
+              appBar: AppBar(
+                title: Center(child: Text("Search")),
+                actions: [
+                  IconButton(
+                    onPressed: () =>
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => SearchPage())),
+                    icon: Icon(Icons.search),
                   )
                 ],
-              );
-            }
-        )
-      );
-    }));
+              ),
+              body: ListView.builder(
+                  itemCount: CommunitiesData.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        _postAuthorRow(context,index),
+                        _postImage(index),
+                        _postdesc(index),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
+                            GestureDetector(
+                              onTap: () async {
+                                setState((){
+                                  if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                                    post.likeCount!.add(UserPreferences.myUser);
+                                    post.likeCount!.remove(UserPreferences.myUser);
+                                    Disliked = !Disliked;
+                                    Liked = !Liked;
+                                  }
+                                  else if( post.likeCount!.contains(UserPreferences.myUser)){
+                                    post.dislikeCount!.remove(UserPreferences.myUser);
+                                    Liked = !Liked;
+                                  }
+                                  post.likeCount!.add(UserPreferences.myUser);
+                                  Liked = !Liked;
+                                });
+                              },
+                              child: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
+                            GestureDetector(
+                              onTap: () async {
+                                setState((){
+                                  if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                                    post.likeCount!.remove(UserPreferences.myUser);
+                                    post.dislikeCount!.add(UserPreferences.myUser);
+                                    Disliked = !Disliked;
+                                    Liked = !Liked;
+                                  }
+                                  else if( post.dislikeCount!.contains(UserPreferences.myUser)){
+                                    post.dislikeCount!.remove(UserPreferences.myUser);
+                                    Disliked = !Disliked;
+                                  }
+                                  post.dislikeCount!.add(UserPreferences.myUser);
+                                  Disliked = !Disliked;
+                                });
+                              },
+                              child: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
+                            ),
+                            Padding(padding: EdgeInsets.only(right: 20.0)),
+                            GestureDetector(
+                              onTap: () => ShowComments(context,postId: post.id, ownerId: myuser.name,),
+                              child: Icon( Icons.chat, size: 27.0,),
+                            )
+                          ],
+                        )
+                      ],
+                    );
+                  }
+              )
+          );
+        }));
   }
 
   ShowComments(BuildContext context,{required String postId , required String ownerId }){
@@ -117,7 +117,7 @@ class _FeedViewState extends State<FeedView> {
 
 }
 
-  Widget _postAuthorRow(BuildContext context,int index) {
+Widget _postAuthorRow(BuildContext context,int index) {
   const double avatarDiameter = 44;
   return GestureDetector(
     onTap: () => BlocProvider.of<FeedNavigatorCubit>(context).showProfile(),
@@ -153,7 +153,7 @@ class _FeedViewState extends State<FeedView> {
   );
 }
 
-  Widget _postImage(int index) {
+Widget _postImage(int index) {
   return AspectRatio(
     aspectRatio: 2,
     child: Image(
@@ -163,7 +163,7 @@ class _FeedViewState extends State<FeedView> {
   );
 }
 
-  Widget _postdesc(int index) {
+Widget _postdesc(int index) {
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 8,

@@ -75,10 +75,11 @@ class _BodyState extends State<Body> {
                     style: ElevatedButton.styleFrom(
                         primary: Colors.blueGrey,
                         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20)),
-                    onPressed: (){
-                      setState(() async {
+                    onPressed: () async {
+                      String ans= await Request.sendThenGetMassage("signIn-" + _usernameController.text + "-" + _passwordController.text + "-,");
+                      setState(() {
                         
-                        String ans= await Request.sendThenGetMassage("signIn-" + _usernameController.text + "-" + _passwordController.text + "-,");
+
 
                         if (_usernameController.text.length < 8) {
                           _usernameError =
