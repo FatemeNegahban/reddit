@@ -12,7 +12,7 @@ class CommunityBody extends StatelessWidget{
               itemCount: CommunitiesData.length,
                 itemBuilder: (context, index) => CommunityItem(
                   community: CommunitiesData[index],
-                  press: () => Navigator.push(
+                  press: ()  => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => CommunityHome(Index: index,),
