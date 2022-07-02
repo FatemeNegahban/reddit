@@ -7,8 +7,8 @@ class Post{
   Community? community;
   String id;
   String? image;
-  List<User>? likeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
-  List<User>? dislikeCount = [User(imagePath: '', name: 'min', email: 'mini', password: '')];
+  List<User>? likeCount = [];
+  List<User>? dislikeCount = [];
   List<String>? comment ;
   User? user;
   List<Post> posts = [];

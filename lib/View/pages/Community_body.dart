@@ -68,6 +68,10 @@ class CommunityItem extends StatelessWidget{
           ],
         ),
       ),
+      /*onTap: () => Navigator.push(
+    context,
+    MaterialPageRoute(
+    builder: (context ) => CommunityHome(Index: index)),),*/
     );
   }
 }

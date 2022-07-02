@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../classes/Post.dart';
+import '../Types/user_type.dart';
+
 class Comments extends StatefulWidget {
   String postId;
   String ownerId;
@@ -60,15 +63,15 @@ class CommentsState extends State<Comments> {
     );
   }
 }
- 
-class Comment extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-  
+
+class comment {
+  User? username;
+  DateTime? Timecreated;
+  Post post;
+  comment({ this.Timecreated, this.username, required this.post});
+
 }
+
 
 
   /*Widget _commentView() {

@@ -51,11 +51,12 @@ class _FeedViewState extends State<FeedView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
-                      GestureDetector(
-                        onTap: () async {
-                          setState((){
-                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                      Container(
+                        child: IconButton(icon: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
+                          onPressed: () {
+                          setState(() {
+                            Liked = !Liked;
+                            /*if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
                               post.likeCount!.add(UserPreferences.myUser);
                               post.likeCount!.remove(UserPreferences.myUser);
                               Disliked = !Disliked;
@@ -65,36 +66,40 @@ class _FeedViewState extends State<FeedView> {
                               post.dislikeCount!.remove(UserPreferences.myUser);
                               Liked = !Liked;
                             }
-                            post.likeCount!.add(UserPreferences.myUser);
-                            Liked = !Liked;
-                          });
-                        },
-                        child: Icon( Liked ? Icons.thumb_up : Icons.thumb_up_alt_outlined , size: 27,),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 40.0 , left: 20.0)),
-                      GestureDetector(
-                        onTap: () async {
-                          setState((){
-                            if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
-                              post.likeCount!.remove(UserPreferences.myUser);
-                              post.dislikeCount!.add(UserPreferences.myUser);
-                              Disliked = !Disliked;
+                            else{
+                              post.likeCount!.add(UserPreferences.myUser);
                               Liked = !Liked;
-                            }
-                            else if( post.dislikeCount!.contains(UserPreferences.myUser)){
-                              post.dislikeCount!.remove(UserPreferences.myUser);
-                              Disliked = !Disliked;
-                            }
-                            post.dislikeCount!.add(UserPreferences.myUser);
-                            Disliked = !Disliked;
-                          });
-                        },
-                        child: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
+                            }*/
+                        }); },),
                       ),
-                      Padding(padding: EdgeInsets.only(right: 20.0)),
-                      GestureDetector(
-                        onTap: () => ShowComments(context,postId: post.id, ownerId: myuser.name,),
-                        child: Icon( Icons.chat, size: 27.0,),
+                      /*Container(
+                        child: Text('${post.likeCount!.length}'),
+                      ),*/
+                      Container(
+                        child: IconButton(icon: Icon( Liked ? Icons.thumb_down : Icons.thumb_down_alt_outlined , size: 27,),
+                          onPressed: () {
+                            setState(() {
+                              Disliked = !Disliked;
+                              /*if(post.likeCount!.contains(UserPreferences.myUser) == post.dislikeCount!.contains(UserPreferences.myUser)){
+                                post.likeCount!.remove(UserPreferences.myUser);
+                                post.dislikeCount!.add(UserPreferences.myUser);
+                                Disliked = !Disliked;
+                                Liked = !Liked;
+                              }
+                              else if( post.dislikeCount!.contains(UserPreferences.myUser)){
+                                post.dislikeCount!.remove(UserPreferences.myUser);
+                                Disliked = !Disliked;
+                              }
+                              else{
+                                post.dislikeCount!.add(UserPreferences.myUser);
+                                Disliked = !Disliked;
+                              }*/
+                            }); },),
+                      ),
+                      Container(
+                        child: IconButton(
+                          icon: Icon( Icons.chat, size: 27.0,), onPressed: () => ShowComments(context,postId: post.id, ownerId: myuser.name,),
+                        ),
                       )
                     ],
                   )
@@ -155,7 +160,7 @@ class _FeedViewState extends State<FeedView> {
 
   Widget _postImage(int index) {
   return AspectRatio(
-    aspectRatio: 2,
+    aspectRatio: 1.3,
     child: Image(
       fit: BoxFit.cover,
       image: NetworkImage(CommunitiesData[index].imagePath),
